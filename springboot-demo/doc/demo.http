@@ -1,0 +1,11 @@
+###
+POST http://127.0.0.1:8080/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=password
+
+
+### Hello Request
+GET http://127.0.0.1:8080/hello
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcwNzc0OTEwNiwiZXhwIjoxNzA3Nzg1MTA2fQ.HkR9H7JGciFlhs92x1dOCEQHx228r3jgjqCp7Cbk4TX0ftuXTkfCW5o-2QkaF2w8gfbv45-TSwBYeWwgcsq-jg
+
