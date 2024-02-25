@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import io.jsonwebtoken.ExpiredJwtException;
+
 /**
  * 自定义全局异常
  */
 @ControllerAdvice
-public class GlobalExceptionHanlder {
+public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

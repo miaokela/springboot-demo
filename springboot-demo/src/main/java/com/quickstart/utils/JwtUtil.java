@@ -35,13 +35,7 @@ public class JwtUtil {
     // 验证JWT令牌
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUsernameFromToken(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
-    }
-
-    // 检查令牌是否过期
-    private Boolean isTokenExpired(String token) {
-        final Date expiration = getClaimFromToken(token, Claims::getExpiration);
-        return expiration.before(new Date());
+        return (username.equals(userDetails.getUsername()));
     }
 
     // 生成JWT令牌

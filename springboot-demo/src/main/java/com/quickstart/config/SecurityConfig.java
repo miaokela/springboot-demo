@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.quickstart.filter.JwtAuthenticationTokenFilter;
+import com.quickstart.utils.JwtAccessDeniedHandler;
+import com.quickstart.utils.JwtAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebSecurity
@@ -30,6 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .csrf().disable() // 禁用CSRF保护
+            .exceptionHandling()
+            .authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+            .accessDeniedHandler(new JwtAccessDeniedHandler())
+            .and()
             .authorizeRequests()
             .antMatchers("/login", "/register").permitAll() // 允许对/login和/register路径的匿名访问
             .anyRequest().authenticated(); // 其他所有请求都需要认证
